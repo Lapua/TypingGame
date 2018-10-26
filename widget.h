@@ -5,6 +5,8 @@
 #include <QtWidgets>
 #include <QKeyEvent>
 #include <QKeySequence>
+#include <QPalette>
+#include <wordlist.h>
 #include <QDebug>
 
 class Widget : public QWidget
@@ -16,16 +18,14 @@ public:
     ~Widget();
 
 private:
+    QPalette *fontColor;
+    QString *word;
     QLabel **wordLabel;
-    QLabel *wordLabel1;
-    QLabel *wordLabel2;
-    QLabel *wordLabel3;
-    QLabel *wordLabel4;
-    QLabel *wordLabel5;
-    QVBoxLayout *rootLayout;
     QHBoxLayout *wordLayout;
+    int currentChar = 0;
 
     void keyPressEvent(QKeyEvent *event);
+    void NextWord();
 };
 
 #endif // WIDGET_H

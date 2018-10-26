@@ -4,19 +4,15 @@ Widget::Widget(QWidget *parent)
     : QWidget(parent)
 {
     wordLayout = new QHBoxLayout;
-    QString word = "alice";
     wordLabel = new QLabel*[10];
+
     for (int i = 0; i < 10; i++) {
         wordLabel[i] = new QLabel;
     }
-    for (int i = 0; i < word.length(); i++) {
-        wordLabel[i] -> setText(word.at(i));
-        wordLayout -> addWidget(wordLabel[i]);
-    }
 
-
-
-    rootLayout = new QVBoxLayout;
+    fontColor = new QPalette;
+    *fontColor = wordLabel[0] -> palette();
+    fontColor -> setColor(QPalette::WindowText, Qt::gray);
 
     setLayout(wordLayout);
 }
@@ -26,7 +22,27 @@ Widget::~Widget()
 
 }
 
+void Widget::NextWord()
+{
+
+    *word = WordList::getWordList();
+    for (int i = 0; i < word -> length(); i++) {
+        wordLabel[i] -> setText(word -> at(i));
+        wordLayout -> addWidget(wordLabel[i]);
+     }
+
+}
+
 void Widget::keyPressEvent(QKeyEvent *event)
 {
-    qDebug() << QKeySequence(event->key()).toString();
+    QKeySequence seq(event -> key());
+    qDebug() << seq.toString();
+    qDebug() << seq.count();
+
+    QString key = QKeySequence(event -> key()).toString();
+    QChar answer = word -> at(currentChar).toUpper();
+    if (key == answer) {
+        wordLabel[currentChar] -> setPalette(*fontColor);
+        currentChar++;
+    }
 }
