@@ -22,10 +22,13 @@ private:
     QString *word;
     QLabel **wordLabel;
     QHBoxLayout *wordLayout;
+    WordList *wordList;
     int currentChar = 0;
+    bool keyEnable = true;
 
     void keyPressEvent(QKeyEvent *event);
     void NextWord();
+
 };
 
 #endif // WIDGET_H

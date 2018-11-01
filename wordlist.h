@@ -1,20 +1,27 @@
 #ifndef WORDLIST_H
 #define WORDLIST_H
 
-#include <QStringList>
+#include <QString>
 #include <QWidget>
 
-class WordList : public QWidget
+class WordList
 {
-public:
-    static QString getWordList()
-    {
-        QStringList qstr = {
-            "alice",
-            "frost"
-        };
+private:
+    QStringList qstrl = {
+        "frost",
+        "alice"
+    };
 
-        return qstr.takeLast();
+public:
+    QString getWordList()
+    {
+        QString str = qstrl.takeLast();
+        return str;
+    }
+
+    bool isEmpty()
+    {
+        return qstrl.isEmpty();
     }
 };
 

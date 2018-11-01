@@ -10,39 +10,55 @@ Widget::Widget(QWidget *parent)
         wordLabel[i] = new QLabel;
     }
 
+    wordList = new WordList;
+    word = new QString;
     fontColor = new QPalette;
     *fontColor = wordLabel[0] -> palette();
-    fontColor -> setColor(QPalette::WindowText, Qt::gray);
+
+    NextWord();
 
     setLayout(wordLayout);
 }
 
 Widget::~Widget()
 {
-
 }
 
 void Widget::NextWord()
 {
+    if (wordList -> isEmpty()) {
+        keyEnable = false;
+        return;
+    }
 
-    *word = WordList::getWordList();
+    fontColor -> setColor(QPalette::WindowText, Qt::black);
+    currentChar = 0;
+    *word = wordList -> getWordList();
     for (int i = 0; i < word -> length(); i++) {
         wordLabel[i] -> setText(word -> at(i));
+        wordLabel[i] -> setPalette(*fontColor);
         wordLayout -> addWidget(wordLabel[i]);
-     }
-
+    }
+    fontColor -> setColor(QPalette::WindowText, Qt::gray);
 }
 
 void Widget::keyPressEvent(QKeyEvent *event)
 {
-    QKeySequence seq(event -> key());
-    qDebug() << seq.toString();
-    qDebug() << seq.count();
+    if (! keyEnable) {
+        return;
+    }
 
     QString key = QKeySequence(event -> key()).toString();
     QChar answer = word -> at(currentChar).toUpper();
     if (key == answer) {
         wordLabel[currentChar] -> setPalette(*fontColor);
         currentChar++;
+    }
+
+    if (currentChar == word -> length()) {
+        for (int i = 0; i < word -> length(); i++) {
+            wordLayout -> removeWidget(wordLabel[i]);
+        }
+        NextWord();
     }
 }
