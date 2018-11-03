@@ -1,3 +1,4 @@
+#include "word.h"
 #include "widget.h"
 #include <QApplication>
 

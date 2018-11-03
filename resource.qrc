@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/">
+        <file>actor/amamiyasora.jpg</file>
+        <file>actor/asakuramomo.jpg</file>
+        <file>actor/hanazawakana.jpg</file>
+        <file>actor/hayamisaori.jpg</file>
+        <file>actor/hidakarina.jpg</file>
+        <file>actor/igutiyuka.jpg</file>
+        <file>actor/kayanoai.jpg</file>
+        <file>actor/kugimiyarie.jpg</file>
+        <file>actor/mimorisuzuko.jpg</file>
+        <file>actor/minaseinori.jpg</file>
+        <file>actor/mizukinana.jpg</file>
+        <file>actor/nannjouyosino.jpg</file>
+        <file>actor/natukawasiina.jpg</file>
+        <file>actor/ogurayui.jpg</file>
+        <file>actor/oohasiayaka.jpg</file>
+        <file>actor/sakuraayane.jpg</file>
+        <file>actor/satousatomi.jpg</file>
+        <file>actor/takahasirie.jpg</file>
+        <file>actor/taketatuayana.jpg</file>
+        <file>actor/tanedarisa.jpg</file>
+        <file>actor/uesakasumire.jpg</file>
+        <file>actor/utidamaaya.jpg</file>
+        <file>actor/yuukiaoi.jpg</file>
+        <file>actor/tomatuharuka.jpg</file>
+        <file>actor/touyamanao.jpg</file>
+    </qresource>
+</RCC>

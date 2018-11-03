@@ -25,8 +25,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        widget.cpp
+    word.cpp \
+    widget.cpp
 
 HEADERS += \
-        widget.h \
-    wordlist.h
+    wordlist.h \
+    word.h \
+    widget.h
+
+DISTFILES += \
+    actor/ogurayui.png
+
+RESOURCES += \
+    resource.qrc

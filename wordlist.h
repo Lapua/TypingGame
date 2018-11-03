@@ -8,8 +8,9 @@ class WordList
 {
 private:
     QStringList qstrl = {
-        "frost",
-        "alice"
+        "touyamanao",
+        "minaseinori",
+        "ogurayui"
     };
 
 public:

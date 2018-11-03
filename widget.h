@@ -3,32 +3,22 @@
 
 #include <QWidget>
 #include <QtWidgets>
-#include <QKeyEvent>
-#include <QKeySequence>
-#include <QPalette>
-#include <wordlist.h>
 #include <QDebug>
+#include "word.h"
 
 class Widget : public QWidget
 {
     Q_OBJECT
-
 public:
-    Widget(QWidget *parent = 0);
-    ~Widget();
+    explicit Widget(QWidget *parent = nullptr);
+
+signals:
+
+public slots:
 
 private:
-    QPalette *fontColor;
-    QString *word;
-    QLabel **wordLabel;
-    QHBoxLayout *wordLayout;
-    WordList *wordList;
-    int currentChar = 0;
-    bool keyEnable = true;
-
-    void keyPressEvent(QKeyEvent *event);
-    void NextWord();
-
+    QVBoxLayout *lay;
+    Word *wordWidget;
 };
 
 #endif // WIDGET_H
