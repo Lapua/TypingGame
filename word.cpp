@@ -9,15 +9,25 @@ Word::Word(QWidget *parent)
         wordLabel[i] = new QLabel;
     }
 
+    jpnLabel = new QLabel;
     wordList = new WordList;
-    word = new QString;
+    words = new QStringList;
+    engWord = new QString;
+    jpnWord = new QString;
     fontColor = new QPalette;
     *fontColor = wordLabel[0] -> palette();
+
+    jpnFont = new QFont;
+    jpnFont -> setWeight(QFont::DemiBold);
+    jpnFont -> setPixelSize(30);
+    engFont = new QFont;
+    engFont -> setPixelSize(20);
 
     wordAndImage = new QVBoxLayout;
     imagePixmap = new QPixmap;
     imageLabel = new QLabel();
-    //imageLabel -> setPixmap(imagePixmap -> scaled(400, 400, Qt::KeepAspectRatio));
+    imageLabel -> setAlignment(Qt::AlignCenter);
+    imageLabel ->   setFixedSize(400, 400);
     wordAndImage -> addWidget(imageLabel);
     wordAndImage -> addLayout(wordLayout);
 
@@ -39,15 +49,29 @@ void Word::NextWord()
 
     fontColor -> setColor(QPalette::WindowText, Qt::black);
     currentChar = 0;
-    *word = wordList -> getWordList();
-    for (int i = 0; i < word -> length(); i++) {
-        wordLabel[i] -> setText(word -> at(i));
+    *words = wordList -> getWordList();
+    *engWord = words -> takeFirst();
+    *jpnWord = words -> takeFirst();
+
+    for (int i = 0; i < 20; i++) {
+        delete wordLabel[i];
+        wordLabel[i] = new QLabel;
+    }
+    for (int i = 0; i < engWord -> length(); i++) {
+        wordLabel[i] -> setText(engWord -> at(i));
         wordLabel[i] -> setPalette(*fontColor);
+        wordLabel[i] -> setFont(*engFont);
         wordLayout -> addWidget(wordLabel[i]);
     }
     fontColor -> setColor(QPalette::WindowText, Qt::gray);
 
-    NextImage(*word);
+    delete jpnLabel;
+    jpnLabel = new QLabel(*jpnWord);
+    jpnLabel -> setAlignment(Qt::AlignCenter);
+    jpnLabel ->setFont(*jpnFont);
+    wordAndImage -> addWidget(jpnLabel);
+
+    NextImage(*engWord);
 }
 
 void Word::NextImage(QString fileName)
@@ -63,16 +87,13 @@ void Word::keyPressEvent(QKeyEvent *event)
     }
 
     QString key = QKeySequence(event -> key()).toString();
-    QChar answer = word -> at(currentChar).toUpper();
+    QChar answer = engWord -> at(currentChar).toUpper();
     if (key == answer) {
         wordLabel[currentChar] -> setPalette(*fontColor);
         currentChar++;
     }
 
-    if (currentChar == word -> length()) {
-        for (int i = 0; i < word -> length(); i++) {
-            wordLayout -> removeWidget(wordLabel[i]);
-        }
+    if (currentChar == engWord -> length()) {
         NextWord();
     }
 }

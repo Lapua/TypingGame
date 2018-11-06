@@ -7,6 +7,7 @@
 #include <QKeySequence>
 #include <QPalette>
 #include <QPixmap>
+#include <QFont>
 #include <wordlist.h>
 #include <QDebug>
 
@@ -20,9 +21,14 @@ public:
 
 private:
     QPalette *fontColor;
-    QString *word;
+    QStringList *words;
+    QString *engWord;
+    QString *jpnWord;
     QLabel **wordLabel;
+    QLabel *jpnLabel;
     QLabel *imageLabel;
+    QFont *engFont;
+    QFont *jpnFont;
     QPixmap *imagePixmap;
     QHBoxLayout *wordLayout;
     QVBoxLayout *wordAndImage;
