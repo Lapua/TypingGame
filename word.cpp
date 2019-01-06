@@ -47,7 +47,7 @@ void Word::NextWord()
         return;
     }
 
-    fontColor -> setColor(QPalette::WindowText, Qt::black);
+    fontColor -> setColor(QPalette::WindowText, Qt::cyan);
     currentChar = 0;
     *words = wordList -> getWordList();
     *engWord = words -> takeFirst();
@@ -63,7 +63,7 @@ void Word::NextWord()
         wordLabel[i] -> setFont(*engFont);
         wordLayout -> addWidget(wordLabel[i]);
     }
-    fontColor -> setColor(QPalette::WindowText, Qt::gray);
+    fontColor -> setColor(QPalette::WindowText, Qt::white);
 
     delete jpnLabel;
     jpnLabel = new QLabel(*jpnWord);

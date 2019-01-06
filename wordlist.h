@@ -74,6 +74,7 @@ public:
 
     QStringList getWordList()
     {
+        //num = 1;    //debug
         num = rand -> bounded(engName.count());
         QStringList strList;
         strList.append(engName.takeAt(num));

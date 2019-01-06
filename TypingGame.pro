@@ -26,12 +26,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     word.cpp \
-    widget.cpp
+    widget.cpp \
+    score.cpp
 
 HEADERS += \
     wordlist.h \
     word.h \
-    widget.h
+    widget.h \
+    score.h
 
 DISTFILES += \
     actor/ogurayui.png

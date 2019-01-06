@@ -5,6 +5,7 @@
 #include <QtWidgets>
 #include <QDebug>
 #include "word.h"
+#include "score.h"
 
 class Widget : public QWidget
 {
@@ -17,8 +18,9 @@ signals:
 public slots:
 
 private:
-    QVBoxLayout *lay;
+    QHBoxLayout *lay;
     Word *wordWidget;
+    Score *scoreWidget;
 };
 
 #endif // WIDGET_H
